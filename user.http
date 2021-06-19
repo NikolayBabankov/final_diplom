@@ -5,7 +5,7 @@ Content-Type: application/json
 {
     "first_name": "Николай",
     "last_name": "Лучший",
-    "email": "493300@mail.ru",
+    "email": "absolute-okna@yandex.ru",
     "password":"#2423t3wef3t335",
     "company":"Panasonic",
     "position":"Supeviser"
@@ -16,8 +16,8 @@ POST http://localhost:8000/user/register/confirm
 Content-Type: application/json
 
 {
-    "email": "lamn4t@yandex.ru",
-    "token":"922414cb1356d58434bc4848a6a"
+    "email": "absolute-okna@yandex.ru",
+    "token":"34915e9f0291ca04e07cb86ccc837883334"
 }
 
 ### Авторизация пользователя
@@ -26,14 +26,14 @@ Content-Type: application/json
 
 {
     "email": "absolute-okna@yandex.ru",
-    "password":"super123"
+    "password":"#2423t3wef3t335"
 }
 
 
 ### Получение контактов
 GET http://localhost:8000/user/contact
 Content-Type: application/json
-Authorization: Token 5df18ec6eafd9158dde5a6c340491894e9d7e9f7
+Authorization: Token 01a77e85cbb8811dc687552dac2fc86f48d65807
 
 
 ### Добавление контакта
