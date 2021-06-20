@@ -1,0 +1,11 @@
+### Список магазинов
+GET http://localhost:8000/shops
+Content-Type: application/json
+
+### Список товаров
+GET http://localhost:8000/products
+Content-Type: application/json
+
+### Фильтрация товаров
+GET http://localhost:8000/products?shop_id=2&category_id=2
+Content-Type: application/jso

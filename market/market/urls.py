@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from django_rest_passwordreset.views import reset_password_request_token, reset_password_confirm
 from users.views import RegisterAccount, ConfirmAccount, AccountDetails, ContactView, LoginAccount
+from shop.views import ShopView
+from product.views import ProductInfoView
 
 
 urlpatterns = [
@@ -30,5 +32,9 @@ urlpatterns = [
     path('user/password_reset', reset_password_request_token, name='password-reset'),
     path('user/password_reset/confirm', reset_password_confirm,
          name='password-reset-confirm'),
+    
+    path('shops', ShopView.as_view(), name='shops'),
+
+    path('products', ProductInfoView.as_view(), name='products')
 
 ]
