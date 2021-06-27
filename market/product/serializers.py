@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from product.models import Product, ProductInfo, ProductParameter
+from product.models import Product, ProductInfo, ProductParameter, Category
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -26,4 +26,11 @@ class ProductInfoSerializer(serializers.ModelSerializer):
         model = ProductInfo
         fields = ('id', 'model', 'product', 'shop', 'quantity',
                   'price', 'price_rrc', 'product_parameters',)
+        read_only_fields = ('id',)
+
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ('id', 'name',)
         read_only_fields = ('id',)

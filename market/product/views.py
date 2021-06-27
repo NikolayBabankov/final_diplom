@@ -1,9 +1,9 @@
 from rest_framework.views import APIView
+from rest_framework.generics import ListAPIView
 from django.db.models import Q
-from product.models import ProductInfo
+from product.models import ProductInfo, Category
 from rest_framework.response import Response
-from product.serializers import ProductInfoSerializer
-
+from product.serializers import ProductInfoSerializer, CategorySerializer
 
 
 class ProductInfoView(APIView):
@@ -23,7 +23,6 @@ class ProductInfoView(APIView):
         if category_id:
             query = query & Q(product__category_id=category_id)
 
-        # фильтруем и отбрасываем дуликаты
         queryset = ProductInfo.objects.filter(
             query).select_related(
             'shop', 'product__category').prefetch_related(
@@ -32,3 +31,11 @@ class ProductInfoView(APIView):
         serializer = ProductInfoSerializer(queryset, many=True)
 
         return Response(serializer.data)
+
+
+class CategoryView(ListAPIView):
+    """
+    Класс для просмотра категорий
+    """
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
