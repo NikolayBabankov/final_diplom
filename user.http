@@ -5,7 +5,7 @@ Content-Type: application/json
 {
     "first_name": "Егоа",
     "last_name": "Петров",
-    "email": "lamn4t@yandex.ru",
+    "email": "lamn4t12@yandex.ru",
     "password":"#2423t3wef3t335",
     "company":"Panasonic",
     "position":"Supeviser"
@@ -39,7 +39,7 @@ Authorization: Token c27b34036682b33090971bb76e4fe028964482ff
 ### Добавление контакта
 POST http://localhost:8000/user/contact
 Content-Type: application/json
-Authorization: Token c27b34036682b33090971bb76e4fe028964482ff
+Authorization: Token b12ec2a8fea0907cc3958c8263793921ae1bfeec
 
 {
     "city": "Zyyyyy",

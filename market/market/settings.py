@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'django_rest_passwordreset',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -163,5 +164,21 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
     ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle'
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '5/second',
+        'user': '30/second'
+    }
+
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'market',
+    'DESCRIPTION': 'API Service for ordering goods for retail chains',
+    'VERSION': '1.0.0',
 }

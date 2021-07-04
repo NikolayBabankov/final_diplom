@@ -8,7 +8,7 @@ class Shop(models.Model):
     """
     name = models.CharField(max_length=50, verbose_name='Название')
     url = models.URLField(verbose_name='Ссылка', null=True, blank=True)
-    user = models.OneToOneField(User, verbose_name='Пользователь',
+    user = models.OneToOneField(User, verbose_name='Пользователь', related_name='shop_to_user',
                                 blank=True, null=True,
                                 on_delete=models.CASCADE)
     state = models.BooleanField(

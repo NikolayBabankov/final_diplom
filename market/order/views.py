@@ -1,6 +1,5 @@
 from rest_framework.views import APIView
 from django.db.models import Q, Sum, F
-from ujson import loads as load_json
 from rest_framework.response import Response
 from django.http import JsonResponse
 from order.models import Order, OrderItem

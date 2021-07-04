@@ -5,3 +5,7 @@ psycopg2-binary
 pyyaml
 ujson
 requests
+drf-spectacular
+pytest
+pytest-django
+model_bakery

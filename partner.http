@@ -1,19 +1,19 @@
 ### Получить статус партнера
-GET   http://localhost:8000/partner/state
+GET   http://localhost:8000/api/v1/partner/state/3/
 Content-Type: application/json
 Authorization: Token 279d9bac936a037d9f7aba350de2d66679d649fc
 
 
 ### Обновления статуса партнера
-POST http://localhost:8000/partner/state
+PATCH  http://localhost:8000/api/v1/partner/state/3/
 Content-Type: application/json
 Authorization: Token 279d9bac936a037d9f7aba350de2d66679d649fc
 
-{
+{  
     "state": "on"
 }
 
-### Получения товаров магазина
+### Получения заказов магазина
 GET http://localhost:8000/partner/orders
 Content-Type: application/json
 Authorization: Token 279d9bac936a037d9f7aba350de2d66679d649fc

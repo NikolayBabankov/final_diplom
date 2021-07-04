@@ -14,12 +14,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 from django_rest_passwordreset.views import reset_password_request_token, reset_password_confirm
 from users.views import RegisterAccount, ConfirmAccount, AccountDetails, ContactView, LoginAccount
-from shop.views import ShopView, PartnerUpdate, PartnerState, PartnerOrders
+from shop.views import ShopViewSet, PartnerUpdateView, PartnerStateViewSet, PartnerOrdersView
 from product.views import ProductInfoView, CategoryView
 from order.views import BasketView, OrderView
+
+router = DefaultRouter()
+
+router.register('shops', ShopViewSet, basename='shops')
+router.register('partner/state', PartnerStateViewSet, basename='partner-state')
+
 
 
 urlpatterns = [
@@ -34,15 +41,14 @@ urlpatterns = [
     path('user/password_reset/confirm', reset_password_confirm,
          name='password-reset-confirm'),
 
-    path('shops', ShopView.as_view(), name='shops'),
-    path('partner/update', PartnerUpdate.as_view(), name='partner-update'),
-    path('partner/state', PartnerState.as_view(), name='partner-state'),
-    path('partner/orders', PartnerOrders.as_view(), name='partner-orders'),
-
     path('products', ProductInfoView.as_view(), name='products'),
     path('categories', CategoryView.as_view(), name='categories'),
 
-    path('basket', BasketView.as_view(), name='basket'),
-    path('order', OrderView.as_view(), name='order')
+    path('partner/update', PartnerUpdateView.as_view(), name='partner-update'),
+    path('partner/orders', PartnerOrdersView.as_view(), name='partner-orders'),
 
+    path('basket', BasketView.as_view(), name='basket'),
+    path('order', OrderView.as_view(), name='order'),
+
+    path('api/v1/', include(router.urls))
 ]

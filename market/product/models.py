@@ -30,7 +30,6 @@ class Product(models.Model):
         return self.name
 
 
-
 class ProductInfo(models.Model):
     model = models.CharField(max_length=80, verbose_name='Модель', blank=True)
     external_id = models.PositiveIntegerField(verbose_name='Внешний ИД')
@@ -50,6 +49,9 @@ class ProductInfo(models.Model):
             models.UniqueConstraint(
                 fields=['product', 'shop', 'external_id'], name='unique_product_info'),
         ]
+
+    def __str__(self):
+        return self.model
 
 
 class Parameter(models.Model):

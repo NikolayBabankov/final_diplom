@@ -1,5 +1,5 @@
 ### Список магазинов
-GET http://localhost:8000/shops
+GET http://localhost:8000/api/v1/shops
 Content-Type: application/json
 
 
