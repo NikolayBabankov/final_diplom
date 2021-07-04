@@ -5,14 +5,6 @@ from django_rest_passwordreset.signals import reset_password_token_created
 
 from users.models import ConfirmEmailToken, User
 
-new_user_registered = Signal(
-    providing_args=['user_id'],
-)
-
-new_order = Signal(
-    providing_args=['user_id'],
-)
-
 
 @receiver(reset_password_token_created)
 def password_reset_token_created(sender, instance, reset_password_token, **kwargs):
@@ -40,17 +32,17 @@ def password_reset_token_created(sender, instance, reset_password_token, **kwarg
     msg.send()
 
 
-@receiver(new_user_registered)
+
 def new_user_registered_signal(user_id, **kwargs):
     """
-    отправляем письмо с подтрердждением почты
+    отправляем письмо с подтверждение почты при регистрации
     """
     # send an e-mail to the user
     token, _ = ConfirmEmailToken.objects.get_or_create(user_id=user_id)
 
     msg = EmailMultiAlternatives(
         # title:
-        f"Password Reset Token for {token.user.email}",
+        f"Token for confirmation{token.user.email}",
         # message:
         token.key,
         # from:
@@ -61,7 +53,7 @@ def new_user_registered_signal(user_id, **kwargs):
     msg.send()
 
 
-@receiver(new_order)
+
 def new_order_signal(user_id, **kwargs):
     """
     отправяем письмо при изменении статуса заказа

@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from django.http import JsonResponse
 from order.models import Order, OrderItem
 from order.serializers import OrderSerializer, OrderItemSerializer
-from market.signals import new_order
+from market.tasks import new_order
 from django.db import IntegrityError
 
 
@@ -137,8 +137,7 @@ class OrderView(APIView):
                     return JsonResponse({'Status': False, 'Errors': 'Неправильно указаны аргументы'})
                 else:
                     if is_updated:
-                        new_order.send(sender=self.__class__,
-                                       user_id=request.user.id)
+                        new_order.delay(user_id=request.user.id)
                         return JsonResponse({'Status': True})
 
         return JsonResponse({'Status': False, 'Errors': 'Не указаны все необходимые аргументы'})

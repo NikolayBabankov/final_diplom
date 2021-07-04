@@ -10,16 +10,6 @@ def api_client():
     return APIClient()
 
 
-# @pytest.fixture
-# def super_user_client():
-#     user = User.objects.create_superuser('myemail@s.com', 'mypassword')
-#     token = Token.objects.get_or_create(user_id=user.id)
-#     list_token = list(token)
-#     client = APIClient()
-#     client.credentials(HTTP_AUTHORIZATION='Token ' + list_token[0].key)
-#     return client
-
-
 @pytest.fixture
 def simple_user_client():
     User = get_user_model()
@@ -44,6 +34,7 @@ def product_factory():
     def factory(**kwargs):
         return baker.make('Product', **kwargs)
     return factory
+
 
 @pytest.fixture
 def product_info_factory():

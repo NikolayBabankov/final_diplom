@@ -5,7 +5,7 @@ Content-Type: application/json
 {
     "first_name": "Егоа",
     "last_name": "Петров",
-    "email": "lamn4t12@yandex.ru",
+    "email": "pik2kol@yandex.ru",
     "password":"#2423t3wef3t335",
     "company":"Panasonic",
     "position":"Supeviser"
@@ -89,7 +89,7 @@ POST http://localhost:8000/user/password_reset
 Content-Type: application/json
 
 {
-"email": "absolute-okna@yandex.ru"
+"email": "pik2kol@yandex.ru"
 }
 
 

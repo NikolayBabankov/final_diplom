@@ -58,6 +58,14 @@ manage.py migrate
 ```bash
 python manage.py runserver
 ```
+### Прописать адрес Redis сервера в settings 
+
+Выполнить команду в втором терминале:
+
+```bash
+celery -A market worker -l info
+```
+
 
 
  Примерами запросов к API
@@ -65,3 +73,7 @@ python manage.py runserver
 * [Взаимодействие с пользователями](./user.http)
 * [Взаимодействие с товарами и заказами](./shop.http)
 * [Взаимодействие с партнерами](./partner.http)
+
+Документация
+
+[Документация по OpenApi](./schema.yml)

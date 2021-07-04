@@ -15,6 +15,7 @@ def test_get_category(category_factory, api_client):
 
 @pytest.mark.django_db
 def test_product(api_client,product_factory, category_factory,product_info_factory,shop_factory):
+    """Тест на получение списка товаров"""
     category = category_factory()
     product1 = product_factory(category_id=category.id)
     product2 = product_factory(category_id=category.id)
